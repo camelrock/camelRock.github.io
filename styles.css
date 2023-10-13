@@ -1,0 +1,38 @@
+a {
+    color: blue;
+    font-weight: bolder;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+}
+
+div {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.div1 {
+    color: maroon;
+}
+
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.class01 {
+    color: blue;
+    background: orange;
+    border: 20px;
+    margin: 20px;
+}

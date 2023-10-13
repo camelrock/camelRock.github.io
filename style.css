@@ -1,0 +1,26 @@
+body {
+    background-color: beige;
+}
+
+.button {
+    color: brown;
+    height: 30px;
+    font-size: 80px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 80px;
+}
+
+.button:hover {
+    background-color: aqua;
+    box-shadow: 20px 20px 5px rgb(255, 255, 255);
+}
+
+.par {
+    text-align: center;
+}
+
+.spa {
+    color: blue;
+}

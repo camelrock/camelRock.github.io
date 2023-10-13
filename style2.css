@@ -1,0 +1,50 @@
+body {
+    color: violet;
+    background: green;
+}
+
+h1 {
+    font-size: 50px;
+    font-weight: bolder;
+    color: black;
+    text-align: center;
+}
+
+h2 {
+    font-size: 40px;
+    text-align: center;
+    font-weight: bolder;
+    display: block;
+}
+
+p {
+    display: block;
+    color: white;
+    margin-left: 20px;
+    font-size: medium;
+    width: 280px;
+    background: darkgreen;
+    padding: 20px;
+    float: left;
+}
+
+img {
+    align-self: center;
+    display: inline;
+    height: 300px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.thePhotos {
+    margin-right: auto;
+    display: block;
+}
+
+span {
+    display: inline;
+    width: 800px;
+
+}
