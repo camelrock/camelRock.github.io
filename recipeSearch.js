@@ -20,6 +20,7 @@ let recipesList = [
     new Recipe(2, 1999, ["water", "bread"], "wet bread")
 ]
 function findRecipes() {
+    rehide();
     const term = document.getElementById("ingredientsInput").value.toLowerCase();
     let k = 0;
     let options = [];
@@ -41,22 +42,8 @@ function findRecipes() {
     document.getElementById("tellIt").style.display = "block";
 }
 
-function searchTerms() {
-    let i = 0;
-    const term = document.getElementById("ingredientsInput").value.toLowerCase();
-    for (ingredient in ingredientsList) {
-        if (term == ingredientsList[ingredient][0]) {
-            while (i < ingredientsList.length) {
-                i++;
-                alert(`${term} is used in ${ingredientsList[ingredient][i]}`);
-            }
-            return;
-        }
-    }
-    document.getElementById("tellIt").style.display = "block";
-}
-
 function searchYears() {
+    rehide();
     let term = Number(document.getElementById("year").value);
     let options = [];
     let i = 0;
@@ -74,6 +61,7 @@ function searchYears() {
 }
 
 function getRecipe() {
+    rehide();
     let recipe = document.getElementById("displayRecipe").value;
     for (i in recipesList) {
         if (recipesList[i].id == recipe) {
@@ -83,4 +71,13 @@ function getRecipe() {
         }
     }
     document.getElementById("tellIt").style.display = "block";
+}
+
+function rehide() {
+    if (document.getElementById("showIt").style.display == "block") {
+        document.getElementById("showIt").style.display = "none";
+    }
+    if (document.getElementById("tellIt").style.display == "block") {
+        document.getElementById("tellIt").style.display = "none";
+    }
 }
