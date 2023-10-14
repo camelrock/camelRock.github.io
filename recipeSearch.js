@@ -74,10 +74,35 @@ function getRecipe() {
 }
 
 function rehide() {
-    if (document.getElementById("showIt").style.display == "block") {
-        document.getElementById("showIt").style.display = "none";
+    document.getElementById("showIt").style.display = "none";
+    document.getElementById("tellIt").style.display = "none";
+}
+
+function descriptionLookup() {
+    let term = document.getElementById("wordy").value;
+    let options = [];
+    let opt = 0;
+    for (i in recipesList) {
+        const len = recipesList[i].description.length;
+        j = 0;
+        while (j < len) {
+            if (recipesList[i].description[j] == " ") {
+                if (s == term) {
+                    options[opt] = recipesList[i];
+                    opt++;
+                    break;
+                }
+                s = "";
+                j++;
+                continue;
+            }
+            s += recipesList[i].description[j];
+            j++
+        }
     }
-    if (document.getElementById("tellIt").style.display == "block") {
-        document.getElementById("tellIt").style.display = "none";
+    if (options.length > 0) {
+        for (i in options) {
+            alert(`${options[i].ingredients} is an option from ${options[i].year}. get recipe number ${options[i].id}`)
+        }
     }
 }
