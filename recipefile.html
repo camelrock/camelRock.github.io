@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="recipeSearch.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div>
+        <div>
+            <input type="text" id="displayRecipe" placeholder="enter recipe id (if known)">
+            <button type="button" onclick="getRecipe()">get
+                recipe</button>
+        </div>
+        <div>
+            <input type="text" id="ingredientsInput" placeholder="enter ingredients">
+            <button type="button" onclick="searchTerms()">search
+                ingredients</button>
+        </div>
+        <div>
+            <input type="text" id="year" placeholder="enter year of recipe">
+            <button type="button" onclick="searchYears()">search years</button>
+        </div>
+    </div>
+    <div>
+        <img id="showIt" src="home.jpg" alt="" style="display: none;">
+        <div id="tellIt" style="display:none">
+            if nothing appears then maybe you don't have a recipe for that
+        </div>
+    </div>
+</body>
+
+</html>
