@@ -131,3 +131,7 @@ function suggest(recipeSuggestion, i) {
     document.getElementById("suggestionsDescription" + String(i)).textContent = recipeSuggestion.description;
     document.getElementById("suggestionsDescription" + String(i)).style.display = "block";
 }
+function thisRecipe(ID) {
+    document.getElementById("showIt").src = document.getElementById(ID).src;
+    document.getElementById("showIt").style.display = "block";
+}
