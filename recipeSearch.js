@@ -115,7 +115,19 @@ function descriptionLookup() {
     }
     if (options.length > 0) {
         for (i in options) {
+            suggest(options[i], i);
             alert(`${options[i].ingredients} is an option from ${options[i].year}. get recipe number ${options[i].id} - ${options[i].description}`)
         }
     }
+}
+
+function suggest(recipeSuggestion, i) {
+    if (i > 2) {
+        if (i == 3) {
+            alert("not all suggestions will be shown :(");
+        }
+        return 1;
+    }
+    document.getElementById("suggestionsDescription" + String(i)).textContent = recipeSuggestion.description;
+    document.getElementById("suggestionsDescription" + String(i)).style.display = "block";
 }
