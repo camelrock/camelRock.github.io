@@ -11,24 +11,26 @@
 
 <body>
     <div>
-        <div>
+        <span>
             <input type="text" id="displayRecipe" placeholder="enter recipe id (if known)">
             <button type="button" onclick="getRecipe()">get
                 recipe</button>
-        </div>
-        <div>
+        </span>
+        <span>
             <input type="text" id="ingredientsInput" placeholder="enter ingredients">
             <button type="button" onclick="findRecipes()">search
                 ingredients</button>
-        </div>
-        <div>
+        </span>
+    </div>
+    <div>
+        <span>
             <input type="text" id="year" placeholder="enter year of recipe">
             <button type="button" onclick="searchYears()">search years</button>
-        </div>
-        <div>
+        </span>
+        <span>
             <input type="text" id="wordy" placeholder="enter waffle">
             <button type="button" onclick="descriptionLookup()">plain or wet?</button>
-        </div>
+        </span>
     </div>
     <div>
         <img id="showIt" src="home.jpg" alt="" style="display: none;" width="50%">
