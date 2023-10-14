@@ -22,7 +22,7 @@ let recipesList = [
 
 function searchTerms() {
     let i = 0;
-    const term = document.getElementById("ingredientsInput").value;
+    const term = document.getElementById("ingredientsInput").value.toLowerCase();
     for (ingredient in ingredientsList) {
         if (term == ingredientsList[ingredient][0]) {
             while (i < ingredientsList.length) {
