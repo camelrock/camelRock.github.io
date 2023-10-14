@@ -79,17 +79,22 @@ function rehide() {
 }
 
 function descriptionLookup() {
+    rehide();
     let term = document.getElementById("wordy").value;
     let options = [];
     let opt = 0;
+    let s = "";
+    let j = 0;
     for (i in recipesList) {
         const len = recipesList[i].description.length;
         j = 0;
+        s = "";
         while (j < len) {
             if (recipesList[i].description[j] == " ") {
                 if (s == term) {
                     options[opt] = recipesList[i];
                     opt++;
+                    s = "";
                     break;
                 }
                 s = "";
@@ -98,6 +103,11 @@ function descriptionLookup() {
             }
             s += recipesList[i].description[j];
             j++
+        }
+        if (s == term) {
+            options[opt] = recipesList[i];
+            opt++;
+            break;
         }
     }
     if (options.length > 0) {
