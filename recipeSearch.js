@@ -80,7 +80,7 @@ function rehide() {
 
 function descriptionLookup() {
     rehide();
-    let term = document.getElementById("wordy").value;
+    let term = document.getElementById("wordy").value.toLowerCase();
     let options = [];
     let opt = 0;
     let s = "";
