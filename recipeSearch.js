@@ -18,7 +18,8 @@ class Recipe {
 }
 let recipesList = [
     new Recipe(1, 1989, ["bread"], "plain bread", "bread"),
-    new Recipe(2, 1999, ["water", "bread"], "wet bread", "bread and water")
+    new Recipe(2, 1999, ["water", "bread"], "wet bread", "bread and water"),
+    new Recipe(3, 1946, ["eel", "bread"], "eely bread", "eel with bread")
 ]
 function findRecipes() {
     rehide();
