@@ -4,11 +4,12 @@ let ingredientsList = [
 ]
 
 class Recipe {
-    constructor(id, year, ingredients, description) {
+    constructor(id, year, ingredients, description, name) {
         this.id = id;
         this.year = year;
         this.ingredients = ingredients;
         this.description = description;
+        this.name = name;
     }
     display() {
         document.getElementById("showThisRecipe").showThis = this.id;
@@ -16,8 +17,8 @@ class Recipe {
     }
 }
 let recipesList = [
-    new Recipe(1, 1989, ["bread"], "plain bread"),
-    new Recipe(2, 1999, ["water", "bread"], "wet bread")
+    new Recipe(1, 1989, ["bread"], "plain bread", "bread"),
+    new Recipe(2, 1999, ["water", "bread"], "wet bread", "bread and water")
 ]
 function findRecipes() {
     rehide();
@@ -64,12 +65,13 @@ function getRecipe() {
     rehide();
     let recipe = document.getElementById("displayRecipe").value;
     for (i in recipesList) {
-        if (recipesList[i].id == recipe) {
-            document.getElementById("showIt").src = "./recipes/" + recipe + ".jpg";
+        if (recipesList[i].id == recipe || recipesList[i].name == recipe) {
+            document.getElementById("showIt").src = "./recipes/" + recipesList[i].id + ".jpg";
             document.getElementById("showIt").style.display = "block";
             return;
         }
     }
+
     document.getElementById("tellIt").style.display = "block";
 }
 
