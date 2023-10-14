@@ -112,7 +112,7 @@ function descriptionLookup() {
     }
     if (options.length > 0) {
         for (i in options) {
-            alert(`${options[i].ingredients} is an option from ${options[i].year}. get recipe number ${options[i].id}`)
+            alert(`${options[i].ingredients} is an option from ${options[i].year}. get recipe number ${options[i].id} - ${options[i].description}`)
         }
     }
 }
