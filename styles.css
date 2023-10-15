@@ -35,3 +35,17 @@ p {
     border: 20px;
     margin: 20px;
 }
+
+button {
+    border-radius: 5px;
+    background-color: yellow;
+}
+
+.fourBoxes {
+    margin: 5px;
+    background-color: lightblue;
+    border: 20px;
+    border-style: solid;
+    border-color: lightblue;
+    border-radius: 10px;
+}
