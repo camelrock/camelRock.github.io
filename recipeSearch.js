@@ -138,3 +138,15 @@ function thisRecipe(ID) {
     document.getElementById("showIt").src = document.getElementById("div" + String(ID)).src;
     document.getElementById("showIt").style.display = "block";
 }
+
+function inputCutUp(inp, i, len) {
+    let str = "";
+    while (i < len) {
+        if (inp[i] == " ") {
+            return (i, str);
+        }
+        str += inp[i];
+        i++;
+    }
+    return (i, str);
+}
