@@ -19,8 +19,10 @@ class Recipe {
 let recipesList = [
     new Recipe(1, 1944, ["bread"], "plain bread", "breadOnItsOwn"),
     new Recipe(2, 1945, ["water", "bread"], "wet bread", "bread and water"),
-    new Recipe(3, 1946, ["eel", "bread"], "eely bread", "eel with bread")
+    new Recipe(3, 1946, ["eel", "bread"], "eely bread", "eel with bread"),
+    new Recipe(4, 1947, ["eel", "water"], "wet eels", "water with eels")
 ]
+
 function findRecipes() {
     rehide();
     const term = document.getElementById("ingredientsInput").value.toLowerCase();
@@ -143,7 +145,7 @@ function inputCutUp(inp, i, len) {
     let str = "";
     while (i < len) {
         if (inp[i] == " ") {
-            return (i, str);
+            return (i + 1, str);
         }
         str += inp[i];
         i++;
