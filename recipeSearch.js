@@ -64,7 +64,7 @@ function searchYears() {
 
 function getRecipe() {
     rehide();
-    let recipe = document.getElementById("displayRecipe").value;
+    let recipe = document.getElementById("displayRecipe").value.toLowerCase();
     for (i in recipesList) {
         if (recipesList[i].id == recipe || recipesList[i].name == recipe) {
             document.getElementById("showIt").src = "./recipes/" + recipesList[i].id + ".jpg";
