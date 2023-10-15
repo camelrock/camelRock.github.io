@@ -66,7 +66,7 @@ function getRecipe() {
     rehide();
     let recipe = document.getElementById("displayRecipe").value.toLowerCase();
     for (i in recipesList) {
-        if (recipesList[i].id == recipe || recipesList[i].name == recipe) {
+        if (recipesList[i].id == recipe || recipesList[i].name.toLowerCase() == recipe) {
             document.getElementById("showIt").src = "./recipes/" + recipesList[i].id + ".jpg";
             document.getElementById("showIt").style.display = "block";
             return;
