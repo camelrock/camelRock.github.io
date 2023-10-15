@@ -37,6 +37,7 @@ function findRecipes() {
     while (k > 0) {
         alert(`consider recipe ${options[k - 1].id} : ${options[k - 1].description} `)
         k--;
+        suggest(options[k], k)
         if (k == 0) {
             return;
         }
