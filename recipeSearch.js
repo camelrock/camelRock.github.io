@@ -17,7 +17,7 @@ class Recipe {
     }
 }
 let recipesList = [
-    new Recipe(1, 1944, ["bread"], "plain bread", "breadWithoutAnythingElse"),
+    new Recipe(1, 1944, ["bread"], "plain bread", "breadOnItsOwn"),
     new Recipe(2, 1945, ["water", "bread"], "wet bread", "bread and water"),
     new Recipe(3, 1946, ["eel", "bread"], "eely bread", "eel with bread")
 ]
@@ -35,7 +35,6 @@ function findRecipes() {
         }
     }
     while (k > 0) {
-        alert(`consider recipe ${options[k - 1].id} : ${options[k - 1].description} `)
         k--;
         suggest(options[k], k)
         if (k == 0) {
@@ -80,6 +79,9 @@ function getRecipe() {
 function rehide() {
     document.getElementById("showIt").style.display = "none";
     document.getElementById("tellIt").style.display = "none";
+    document.getElementById("suggestionsDescription0").style.display = "none";
+    document.getElementById("suggestionsDescription1").style.display = "none";
+    document.getElementById("suggestionsDescription2").style.display = "none";
 }
 
 function descriptionLookup() {
@@ -116,7 +118,6 @@ function descriptionLookup() {
     if (options.length > 0) {
         for (i in options) {
             suggest(options[i], i);
-            alert(`${options[i].ingredients} is an option from ${options[i].year}. get recipe number ${options[i].id} - ${options[i].description}`)
         }
     }
 }
@@ -128,7 +129,8 @@ function suggest(recipeSuggestion, i) {
         }
         return 1;
     }
-    document.getElementById("div" + String(i)).textContent = recipeSuggestion.description;
+    document.getElementById("div" + String(i)).textContent = "recipe " + recipeSuggestion.id + ": '" + recipeSuggestion.name + "' requires : " + recipeSuggestion.ingredients;
+    // this is wasteful
     document.getElementById("div" + String(i)).src = "./recipes/" + recipeSuggestion.id + ".jpg";
     document.getElementById("suggestionsDescription" + String(i)).style.display = "block";
 }
