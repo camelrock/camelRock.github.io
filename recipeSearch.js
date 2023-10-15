@@ -110,7 +110,6 @@ function descriptionLookup() {
         if (s == term) {
             options[opt] = recipesList[i];
             opt++;
-            break;
         }
     }
     if (options.length > 0) {
@@ -128,10 +127,11 @@ function suggest(recipeSuggestion, i) {
         }
         return 1;
     }
-    document.getElementById("suggestionsDescription" + String(i)).textContent = recipeSuggestion.description;
+    document.getElementById("div" + String(i)).textContent = recipeSuggestion.description;
+    document.getElementById("div" + String(i)).src = "./recipes/" + recipeSuggestion.id + ".jpg";
     document.getElementById("suggestionsDescription" + String(i)).style.display = "block";
 }
 function thisRecipe(ID) {
-    document.getElementById("showIt").src = document.getElementById(ID).src;
+    document.getElementById("showIt").src = document.getElementById("div" + String(ID)).src;
     document.getElementById("showIt").style.display = "block";
 }
