@@ -128,7 +128,7 @@ function descriptionLookup() {
 function suggest(recipeSuggestion, i) {
     if (i > 2) {
         if (i == 3) {
-            alert("not all suggestions will be shown :(");
+            alert("not all suggestions can be shown :(");
         }
         return 1;
     }
