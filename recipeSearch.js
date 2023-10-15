@@ -1,7 +1,3 @@
-let ingredientsList = [
-    ["bread", "bread and water", "bread"],
-    ["water", "bread and water", "glass of water"]
-]
 
 class Recipe {
     constructor(id, year, ingredients, description, name) {
