@@ -16,8 +16,7 @@ let recipesList = [
     new Recipe(1, 1944, ["bread"], "plain bread", "breadOnItsOwn"),
     new Recipe(2, 1945, ["water", "bread"], "wet bread", "bread and water"),
     new Recipe(3, 1946, ["eel", "bread"], "eely bread", "eel with bread"),
-    new Recipe(4, 1947, ["eel", "water"], "wet eels", "water with eels"),
-    new Recipe(5, 1947, ["bread", "bread"], "double bread", "bready bread")
+    new Recipe(4, 1947, ["eel", "water"], "wet eels", "water with eels")
 ]
 
 function findRecipes() {
