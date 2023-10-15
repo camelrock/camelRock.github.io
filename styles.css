@@ -42,10 +42,13 @@ button {
 }
 
 .fourBoxes {
-    margin: 5px;
     background-color: lightblue;
     border: 20px;
     border-style: solid;
     border-color: lightblue;
     border-radius: 10px;
+}
+
+.fourB {
+    width: 200px;
 }
