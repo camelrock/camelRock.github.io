@@ -40,7 +40,7 @@ function findRecipes() {
             return;
         }
     }
-    document.getElementById("tellIt").textContent = `there appear to be no records of humans eating ${term} so caution is to be advised. If you know '${term}' to be edible, consider sending your recipe to jmlunlocked@gmail.com for consideration`
+    document.getElementById("tellIt").textContent = `there appear to be no records of humans eating '${term}' so caution is to be advised. If you know '${term}[s]' to be edible, consider sending your recipe to jmlunlocked@gmail.com for consideration`
     document.getElementById("tellIt").style.display = "block";
 }
 
@@ -143,6 +143,7 @@ function checkNotes() {
         }
     }
     else {
+        document.getElementById("tellIt").textContent = `there appear to be no records of food being '${term}'. There's not much choice ATM but there is at least something wet`;
         document.getElementById("tellIt").style.display = "block";
     }
 }
