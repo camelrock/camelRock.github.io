@@ -176,8 +176,3 @@ function inputCutUp(inp, i, len) {
     }
     return (i, str);
 }
-var para = document.createElement("p");
-var node = document.createTextNode("node");
-para.appendChild(node);
-var parent = document.getElementById("div1");
-parent.appendChild(para);
