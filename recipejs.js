@@ -79,7 +79,7 @@ function searchYears() {
         }
     }
     else {
-        document.getElementById("tellIt").textContent = "no results returned... To help you locate yourself on the map of gastronomic survival, you can start by finding food from the STONE AGE or IRON AGE, or 1945... OR - why not try searching ingrediets ?";
+        document.getElementById("tellIt").textContent = "no results returned... To help you locate yourself on the map of EDIBLE vs INEDIBLE, you can start by finding food from the STONE AGE or IRON AGE or 1945 - or - why not try searching ingrediets ?";
         document.getElementById("tellIt").style.display = "block";
     }
 }
