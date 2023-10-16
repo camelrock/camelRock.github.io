@@ -79,7 +79,7 @@ function searchYears() {
         }
     }
     else {
-        document.getElementById("tellIt").textContent = "no results returned... To help you locate the map of human culinary knowledge, you can start by finding food from the 'STONE AGE', 'IRON AGE', or 1945... OR : why not search ingrediets ?";
+        document.getElementById("tellIt").textContent = "no results returned... To help you locate yourself on the map of gastronomic survival, you can start by finding food from the STONE AGE or IRON AGE, or 1945... OR - why not try searching ingrediets ?";
         document.getElementById("tellIt").style.display = "block";
     }
 }
