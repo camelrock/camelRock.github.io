@@ -40,7 +40,7 @@ function findRecipes() {
             return;
         }
     }
-    document.getElementById("tellIt").textContent = `there appear to be no recipes using that ingredient - if you're stuck, you could start with 'water' or try one of the other searches.. but bear in mind that this is early days and there aren't many records. If you know '${term}' is edible and have a recipe using it, then consider sending it to jmlunlocked@gmail.com`
+    document.getElementById("tellIt").textContent = `there appear to be no records of humans eating '${term}' so caution is to be advised. If you know '${term}[s]' to be edible, consider sending your recipe to jmlunlocked@gmail.com for consideration`
     document.getElementById("tellIt").style.display = "block";
 }
 
@@ -79,7 +79,7 @@ function searchYears() {
         }
     }
     else {
-        document.getElementById("tellIt").textContent = "no results returned... To help you locate the map of human culinary knowledge, you can start by finding food from the 'STONE AGE', 'IRON AGE', or 1945... OR : why not search ingrediets ?";
+        document.getElementById("tellIt").textContent = "no results returned... To help you locate yourself on the map of EDIBLE vs INEDIBLE, you can start by finding food from the STONE AGE or IRON AGE or 1945 - or - why not try searching ingrediets ?";
         document.getElementById("tellIt").style.display = "block";
     }
 }
@@ -143,6 +143,7 @@ function checkNotes() {
         }
     }
     else {
+        document.getElementById("tellIt").textContent = `there appear to be no records of food being '${term}'. There's not much choice ATM but there is at least something wet`;
         document.getElementById("tellIt").style.display = "block";
     }
 }
