@@ -17,7 +17,8 @@ class Recipe {
 let recipesList = [
     new Recipe(0, -1000000000, ["stone", "water"], "very soupy", "stone soup", "AMBER"),
     new Recipe(1, -1000000, ["water", "stone", "spoon"], "easy soup", "stone soup with a spoon", "AMBER"),
-    new Recipe(2, 1945, ["bread", "water", "spoon"], "wet bread", "water with bread and spoon", "GREEN")
+    new Recipe(2, 1945, ["bread", "water", "spoon"], "wet bread", "water with bread and spoon", "GREEN"),
+    new Recipe(3, 2023, ["apple crumble", "moths"], "dry lemony crumble", "lemon moth crumble - see: https://medium.com/@jmlunlocked/lemon-moth-crumble-2fbbeac24280 for full recipe", "AMBER")
 ]
 
 function findRecipes() {
