@@ -40,7 +40,7 @@ function findRecipes() {
             return;
         }
     }
-    document.getElementById("tellIt").textContent = `there appear to be no recipes using that ingredient - if you're stuck, you could start with 'water' or try one of the other searches.. but bear in mind that this is early days and there aren't many records. If you know '${term}' is edible and have a recipe involving it, then consider sending it to jmlunlocked@gmail.com`
+    document.getElementById("tellIt").textContent = `there appear to be no recipes using that ingredient - if you're stuck, you could start with 'water' or try one of the other searches.. but bear in mind that this is early days and there aren't many records. If you know '${term}' is edible and have a recipe using it, then consider sending it to jmlunlocked@gmail.com`
     document.getElementById("tellIt").style.display = "block";
 }
 
