@@ -40,7 +40,7 @@ function findRecipes() {
             return;
         }
     }
-    document.getElementById("tellIt").textContent = `there appear to be no recipes of humans eating ${term} so caution is to be advised. If you know ${term} to be edible, consider sending it to jmlunlocked@gmail.com for consideration`
+    document.getElementById("tellIt").textContent = `there appear to be no recipes of humans eating ${term} so caution is to be advised. If you know '${term}' to be edible, consider sending it to jmlunlocked@gmail.com for consideration`
     document.getElementById("tellIt").style.display = "block";
 }
 
