@@ -38,7 +38,6 @@ function findRecipes() {
         const len = options.length;
         for (let k = 0; k < len; k++) {
             let m = suggest(options, k, options.length);
-            options.splice(m, 1);
             if (k == 0) {
                 return;
             }
@@ -84,7 +83,6 @@ function searchYears() {
         const len = options.length;
         for (let i = 0; i < len; i++) {
             let j = suggest(options, i, options.length);
-            options.splice(j, 1);
         }
     }
     else {
@@ -150,7 +148,6 @@ function checkNotes() {
         const len = options.length;
         for (let i = 0; i < len; i++) {
             let j = suggest(options, i, options.length);
-            options.splice(j, 1);
         }
     }
     else {
@@ -166,7 +163,7 @@ function suggest(recipeSuggestion, i, iMax) {
         }
         return 1;
     }
-    i = (((i + 1) * 5) % iMax);
+
     document.getElementById("div" + String(i)).textContent = "recipe " + recipeSuggestion[i].id + " : '" + recipeSuggestion[i].name + "' requires : " + recipeSuggestion[i].ingredients;
     // this is wasteful
     document.getElementById("div" + String(i)).src = "./recipeRecords/" + recipeSuggestion[i].id + ".jpg";
