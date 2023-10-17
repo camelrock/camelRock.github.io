@@ -34,15 +34,18 @@ function findRecipes() {
             }
         }
     }
-    while (k > 0) {
-        k--;
-        suggest(options[k], k)
-        if (k == 0) {
-            return;
+    if (k > 0) {
+        const len = options.length;
+        for (let k = 0; k < len; k++) {
+            let m = suggest(options, k, options.length);
+            options.splice(m, 1);
+            if (k == 0) {
+                return;
+            }
         }
+        document.getElementById("tellIt").textContent = `there appear to be no records of humans eating '${term}' so caution is to be advised. If you know '${term}[s]' to be edible, consider sending your recipe to jmlunlocked@gmail.com for consideration`
+        document.getElementById("tellIt").style.display = "block";
     }
-    document.getElementById("tellIt").textContent = `there appear to be no records of humans eating '${term}' so caution is to be advised. If you know '${term}[s]' to be edible, consider sending your recipe to jmlunlocked@gmail.com for consideration`
-    document.getElementById("tellIt").style.display = "block";
 }
 
 function searchYears() {
@@ -78,8 +81,10 @@ function searchYears() {
         }
     }
     if (options.length > 0) {
-        for (opt in options) {
-            suggest(options[opt], opt);
+        const len = options.length;
+        for (let i = 0; i < len; i++) {
+            let j = suggest(options, i, options.length);
+            options.splice(j, 1);
         }
     }
     else {
@@ -142,8 +147,10 @@ function checkNotes() {
         }
     }
     if (options.length > 0) {
-        for (i in options) {
-            suggest(options[i], i);
+        const len = options.length;
+        for (let i = 0; i < len; i++) {
+            let j = suggest(options, i, options.length);
+            options.splice(j, 1);
         }
     }
     else {
@@ -152,18 +159,20 @@ function checkNotes() {
     }
 }
 
-function suggest(recipeSuggestion, i) {
+function suggest(recipeSuggestion, i, iMax) {
     if (i > 2) {
         if (i == 3) {
             alert("not all suggestions can be shown :(");
         }
         return 1;
     }
-    document.getElementById("div" + String(i)).textContent = "recipe " + recipeSuggestion.id + ": '" + recipeSuggestion.name + "' requires : " + recipeSuggestion.ingredients;
+    i = (((i + 1) * 5) % iMax);
+    document.getElementById("div" + String(i)).textContent = "recipe " + recipeSuggestion[i].id + " : '" + recipeSuggestion[i].name + "' requires : " + recipeSuggestion[i].ingredients;
     // this is wasteful
-    document.getElementById("div" + String(i)).src = "./recipeRecords/" + recipeSuggestion.id + ".jpg";
-    document.getElementById("button" + String(i)).style.backgroundColor = recipeSuggestion.rag;
+    document.getElementById("div" + String(i)).src = "./recipeRecords/" + recipeSuggestion[i].id + ".jpg";
+    document.getElementById("button" + String(i)).style.backgroundColor = recipeSuggestion[i].rag;
     document.getElementById("suggestionsDescription" + String(i)).style.display = "block";
+    return i;
 }
 function thisRecipe(ID) {
     document.getElementById("showIt").src = document.getElementById("div" + String(ID)).src;
