@@ -15,8 +15,8 @@ class Recipe {
 }
 
 let recipesList = [
-    new Recipe(0, -1000000000, ["stone", "water"], "very soupy", "stone soup", "AMBER"),
-    new Recipe(1, -1000000, ["water", "stone", "spoon"], "easy soup", "stone soup with a spoon", "AMBER"),
+    new Recipe(0, -1000000000, ["stone", "water"], "very soupy", "stone soup", "ORANGE"),
+    new Recipe(1, -1000000, ["water", "stone", "spoon"], "easy soup", "stone soup with a spoon", "ORANGE"),
     new Recipe(26, 1945, ["bread", "water", "spoon"], "wet bread", "water with bread and spoon", "GREEN"),
     new Recipe(3, 2022, ["bread", "crumbly cheese", "cheese", "olives", "sandwich toaster"], "crumbly cheese and olive toasted sandwich", "cheese and olive sandwich", "GREEN")
 ]
@@ -162,6 +162,7 @@ function suggest(recipeSuggestion, i) {
     document.getElementById("div" + String(i)).textContent = "recipe " + recipeSuggestion.id + ": '" + recipeSuggestion.name + "' requires : " + recipeSuggestion.ingredients;
     // this is wasteful
     document.getElementById("div" + String(i)).src = "./recipeRecords/" + recipeSuggestion.id + ".jpg";
+    document.getElementById("button" + String(i)).style.backgroundColor = recipeSuggestion.rag;
     document.getElementById("suggestionsDescription" + String(i)).style.display = "block";
 }
 function thisRecipe(ID) {
