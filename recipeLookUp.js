@@ -15,9 +15,10 @@ class Recipe {
 }
 
 let recipesList = [
-    new Recipe(0, -1000000000, ["stone", "water"], "very soupy", "stone soup", "AMBER"),
-    new Recipe(1, -1000000, ["water", "stone", "spoon"], "easy soup", "stone soup with a spoon", "AMBER"),
-    new Recipe(2, 1945, ["bread", "water", "spoon"], "wet bread", "water with bread and spoon", "GREEN")
+    new Recipe(0, -1000000000, ["stone", "water"], "very soupy", "stone soup", "ORANGE"),
+    new Recipe(1, -1000000, ["water", "stone", "spoon"], "easy soup", "stone soup with a spoon", "ORANGE"),
+    new Recipe(26, 1945, ["bread", "water", "spoon"], "wet bread", "water with bread and spoon", "GREEN"),
+    new Recipe(3, 2022, ["bread", "crumbly cheese", "cheese", "olives", "sandwich toaster"], "crumbly cheese and olive toasted sandwich", "cheese and olive sandwich", "GREEN")
 ]
 
 function findRecipes() {
@@ -35,7 +36,8 @@ function findRecipes() {
     }
     while (k > 0) {
         k--;
-        suggest(options[k], k)
+        suggest(options[k], k, options.length);
+        options.splice(k, 1);
         if (k == 0) {
             return;
         }
@@ -48,6 +50,9 @@ function searchYears() {
     rehide();
     let term;
     switch (term = document.getElementById("year").value.toUpperCase()) {
+        case "":
+            alert("input a time");
+            return 1;
         case "STONE AGE":
             term = -1000000000;
             break
@@ -74,8 +79,9 @@ function searchYears() {
         }
     }
     if (options.length > 0) {
-        for (opt in options) {
-            suggest(options[opt], opt);
+        for (i in options) {
+            suggest(options[i], i, options.length);
+            options.splice(i, 1);
         }
     }
     else {
@@ -139,7 +145,8 @@ function checkNotes() {
     }
     if (options.length > 0) {
         for (i in options) {
-            suggest(options[i], i);
+            suggest(options[i], i, options.length);
+            options.splice(i, 1);
         }
     }
     else {
@@ -148,16 +155,18 @@ function checkNotes() {
     }
 }
 
-function suggest(recipeSuggestion, i) {
+function suggest(recipeSuggestion, i, iMax) {
     if (i > 2) {
         if (i == 3) {
             alert("not all suggestions can be shown :(");
         }
         return 1;
     }
-    document.getElementById("div" + String(i)).textContent = "recipe " + recipeSuggestion.id + ": '" + recipeSuggestion.name + "' requires : " + recipeSuggestion.ingredients;
+    i = ((i * 5) % iMax);
+    document.getElementById("div" + String(i)).textContent = "recipe " + recipeSuggestion.id + " : '" + recipeSuggestion.name + "' requires : " + recipeSuggestion.ingredients;
     // this is wasteful
     document.getElementById("div" + String(i)).src = "./recipeRecords/" + recipeSuggestion.id + ".jpg";
+    document.getElementById("button" + String(i)).style.backgroundColor = recipeSuggestion.rag;
     document.getElementById("suggestionsDescription" + String(i)).style.display = "block";
 }
 function thisRecipe(ID) {
