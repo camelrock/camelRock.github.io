@@ -36,9 +36,9 @@ function findRecipes() {
     }
     if (k > 0) {
         const len = options.length;
-        for (let k = 0; k < len; k++) {
-            let m = suggest(options, k, options.length);
-            if (k == 0) {
+        for (let kk = 0; kk < len; kk++) {
+            let m = suggest(options, kk, options.length);
+            if (kk == len - 1) {
                 return;
             }
         }
