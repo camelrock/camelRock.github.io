@@ -16,12 +16,14 @@ let recipesList = [
     new Recipe(1, 1944, ["bread"], "plain bread", "breadOnItsOwn"),
     new Recipe(2, 1945, ["water", "bread"], "wet bread", "bread and water"),
     new Recipe(3, 1946, ["eel", "bread"], "eely bread", "eel with bread"),
-    new Recipe(4, 1947, ["eel", "water"], "wet eels", "water with eels")
+    new Recipe(4, 1947, ["eel", "water"], "wet eels", "water with eels"),
+    new Recipe(5, 1948, ["eel"], "plain eel", "plainEel")
 ]
 
 function findRecipes() {
     rehide();
     const term = document.getElementById("ingredientsInput").value.toLowerCase();
+    document.getElementById("ingredientsInput").value = "";
     let k = 0;
     let options = [];
     for (i in recipesList) {
