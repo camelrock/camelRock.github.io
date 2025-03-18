@@ -16,7 +16,7 @@
         <p>
             Complex instructions:<br>
             1. Enter the ID[s] for the lists you would like to play with (separated by commas, e.g. "2", "3", "1,2,3").<br>
-            2. If you would like to play for longer or shorter than 90 seconds, enter the duration (in seconds) in the "duration" box e.g. "120"
+            2. If you would like to play for longer or shorter than 90 seconds, enter the duration (in seconds) in the "duration" box e.g. "120"<br>
             3. Press "PLAY"
         </p>
         <input type="text" id="id" placeholder="enter ID[s]">
@@ -37,21 +37,15 @@
         let currentWord = "";
         let milliseconds = 0;
         document.getElementById('play').addEventListener('click', function(){
-            const ayDee = document.getElementById('id').value.trim();
-            const seconds = document.getElementById('seconds').value.trim();
-            if (seconds === ""){
-                seconds = '9';
-            }
-            if (ayDee === ""){
-                ayDee = '1';
-            }
+            let ayDee = document.getElementById('id').value.trim() || '1';
+            let seconds = document.getElementById('seconds').value.trim() || '90';
             document.getElementById('setUp').style.display='none';
             document.getElementById('game').style.display='inline-block'
             startTime = new Date().getTime();
-            if (ayDee === "1"){
+            if (ayDee === '1'){
                 words = ["cat", "dog", "tree", "hysteria", "universal grammar"];
             }
-            if (seconds === "90"){
+            if (seconds === '90'){
                 milliseconds = 5000
             }
             currentIndex = Math.floor(Math.random() * words.length);
@@ -61,11 +55,11 @@
         })
 
         document.getElementById('yes').addEventListener('click', function(){
-            document.getElementById('theWord').textContent = 'correct';
-            words.splice(currentIndex, 1);
             if (new Date().getTime() - startTime < milliseconds){
                 currentIndex = Math.floor(Math.random() * words.length);
-                document.getElementById('theWord').textContent = words[currentIndex];
+                currentWord = words[currentIndex];
+                document.getElementById('theWord').textContent = currentWord;
+                words.splice(currentIndex, 1);
                 return
             }
             document.getElementById('game').style.display='none';
@@ -75,12 +69,12 @@
             }
         })
         document.getElementById('no').addEventListener('click', function(){
-            document.getElementById('theWord').textContent = 'incorrect';
-            passedWords.push(words[currentIndex]);
-            words.splice(currentIndex, 1);
+            passedWords.push(currentWord);
             if (new Date().getTime() - startTime < milliseconds){
                 currentIndex = Math.floor(Math.random() * words.length);
-                document.getElementById('theWord').textContent = words[currentIndex];
+                currentWord = words[currentIndex];
+                words.splice(currentIndex, 1);
+                document.getElementById('theWord').textContent = currentWord;
                 return
             }
             document.getElementById('game').style.display='none';
