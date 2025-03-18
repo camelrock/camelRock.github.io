@@ -45,18 +45,17 @@
             if (ayDee === '1'){
                 words = ["cat", "dog", "tree", "hysteria", "universal grammar"];
             }
-            if (seconds === '90'){
-                milliseconds = 5000
-            }
-            currentIndex = Math.floor(Math.random() * words.length);
+            milliseconds = parseFloat(seconds) * 1000;
+            currentIndex = Math.floor(Math.random()**8 * words.length);
             currentWord = words[currentIndex];
             words.splice(currentIndex, 1);
             document.getElementById('theWord').textContent = currentWord;
+            passedWords = [];
         })
 
         document.getElementById('yes').addEventListener('click', function(){
             if (new Date().getTime() - startTime < milliseconds){
-                currentIndex = Math.floor(Math.random() * words.length);
+                currentIndex = Math.floor(Math.random()**8 * words.length);
                 currentWord = words[currentIndex];
                 document.getElementById('theWord').textContent = currentWord;
                 words.splice(currentIndex, 1);
@@ -71,7 +70,7 @@
         document.getElementById('no').addEventListener('click', function(){
             passedWords.push(currentWord);
             if (new Date().getTime() - startTime < milliseconds){
-                currentIndex = Math.floor(Math.random() * words.length);
+                currentIndex = Math.floor(Math.random()**8 * words.length);
                 currentWord = words[currentIndex];
                 words.splice(currentIndex, 1);
                 document.getElementById('theWord').textContent = currentWord;
