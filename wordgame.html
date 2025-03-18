@@ -3,122 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Name Randomizer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-            background-color: #f5f5f5;
-        }
-        .container {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        input {
-            padding: 10px;
-            font-size: 16px;
-            width: 70%;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 5px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        #result {
-            margin-top: 20px;
-            font-size: 24px;
-            font-weight: bold;
-            min-height: 50px;
-        }
-        #fileInput {
-            margin: 15px 0;
-        }
-        .instructions {
-            text-align: left;
-            margin: 20px 0;
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
+    <title>Wordgame</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Wordgame</h1>
-        
-        <div class="instructions">
-            <p>1. Upload a text file with words (one word per line).<br>
-               2. Enter your name.<br>
-               3. Click "Randomize My Name!" to see your name with a random word.<br>
-               4. Click "Thanks for Playing" when you're done.</p>
-        </div>
-        
-        <input type="file" id="fileInput" accept=".txt">
-        <br>
-        <input type="text" id="nameInput" placeholder="Enter your name">
-        <br>
-        <button id="randomizeBtn">Randomize My Name!</button>
-        <button id="thanksBtn">Thanks for Playing</button>
-        
-        <div id="result"></div>
+    <div id="setUp">
+        <h1>
+            Guess The Word
+        </h1>
+        <p>
+            Easy instructions: press "PLAY"
+        </p>
+        <p>
+            Complex instructions:<br>
+            1. Enter the ID[s] for the lists you would like to play with (separated by commas, e.g. "2", "3", "1,2,3").<br>
+            2. If you would like to play for longer or shorter than 90 seconds, enter the duration (in seconds) in the "duration" box e.g. "120"
+            3. Press "PLAY"
+        </p>
+        <input type="text" id="id" placeholder="enter ID[s]">
+        <input type="text" id="seconds" placeholder="enter duration (in seconds)">
+        <button id="play">PLAY</button>
+        <p id="passedWords"></p>
     </div>
-
+    <div id="game" style="display: none;">
+        <p id="theWord"></p>
+        <button id="yes">YES</button>
+        <button id="no">NO</button>
+    </div>
     <script>
+        let startTime = 0;
         let words = [];
-        
-        document.getElementById('fileInput').addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (!file) return;
-            
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const content = e.target.result;
-                words = content.split(/\r?\n/).filter(word => word.trim() !== '');
-                console.log('Loaded words:', words);
-            };
-            reader.readAsText(file);
-        });
-        
-        document.getElementById('randomizeBtn').addEventListener('click', function() {
-            const nameInput = document.getElementById('nameInput').value.trim();
-            const resultDiv = document.getElementById('result');
-            
-            if (!nameInput) {
-                resultDiv.textContent = 'Please enter your name!';
-                return;
+        let passedWords = [];
+        let currentIndex = 0;
+        let currentWord = "";
+        let milliseconds = 0;
+        document.getElementById('play').addEventListener('click', function(){
+            const ayDee = document.getElementById('id').value.trim();
+            const seconds = document.getElementById('seconds').value.trim();
+            if (seconds === ""){
+                seconds = '9';
             }
-            
-            if (words.length === 0) {
-                resultDiv.textContent = 'Please upload a word list first!';
-                return;
+            if (ayDee === ""){
+                ayDee = '1';
             }
-            
-            const randomWord = words[Math.floor(Math.random() * words.length)];
-            resultDiv.textContent = `${nameInput} ${randomWord}`;
-        });
-        
-        document.getElementById('thanksBtn').addEventListener('click', function() {
-            document.getElementById('result').textContent = 'Thanks for playing!';
-        });
+            document.getElementById('setUp').style.display='none';
+            document.getElementById('game').style.display='inline-block'
+            startTime = new Date().getTime();
+            if (ayDee === "1"){
+                words = ["cat", "dog", "tree", "hysteria", "universal grammar"];
+            }
+            if (seconds === "90"){
+                milliseconds = 5000
+            }
+            currentIndex = Math.floor(Math.random() * words.length);
+            currentWord = words[currentIndex];
+            words.splice(currentIndex, 1);
+            document.getElementById('theWord').textContent = currentWord;
+        })
+
+        document.getElementById('yes').addEventListener('click', function(){
+            document.getElementById('theWord').textContent = 'correct';
+            words.splice(currentIndex, 1);
+            if (new Date().getTime() - startTime < milliseconds){
+                currentIndex = Math.floor(Math.random() * words.length);
+                document.getElementById('theWord').textContent = words[currentIndex];
+                return
+            }
+            document.getElementById('game').style.display='none';
+            document.getElementById('setUp').style.display='inline-block';
+            if (passedWords.length > 0){
+                document.getElementById('passedWords').textContent = `Passed words include: ${passedWords}`;
+            }
+        })
+        document.getElementById('no').addEventListener('click', function(){
+            document.getElementById('theWord').textContent = 'incorrect';
+            passedWords.push(words[currentIndex]);
+            words.splice(currentIndex, 1);
+            if (new Date().getTime() - startTime < milliseconds){
+                currentIndex = Math.floor(Math.random() * words.length);
+                document.getElementById('theWord').textContent = words[currentIndex];
+                return
+            }
+            document.getElementById('game').style.display='none';
+            document.getElementById('setUp').style.display='inline-block';
+            if (passedWords.length > 0){
+                document.getElementById('passedWords').textContent = `Passed words include: ${passedWords}`;
+            }
+        })
     </script>
-</div>
 </body>
 </html>
