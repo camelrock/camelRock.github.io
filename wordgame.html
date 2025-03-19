@@ -15,8 +15,8 @@
         </p>
         <p>
             Complex instructions:<br>
-            1. Enter the ID[s] for the lists you would like to play with (separated by commas, e.g. "2", "3", "1,2,3").<br>
-            2. If you would like to play for longer or shorter than 90 seconds, enter the duration (in seconds) in the "duration" box e.g. "120"<br>
+            1. Enter the ID[s] for the lists you want to play with (separated by commas, e.g. "1", "3", "1,2,3").<br>
+            2. If you want to play for longer or shorter than 90 seconds, enter the duration (in seconds) in the "duration" box e.g. "120"<br>
             3. Press "PLAY"
         </p>
         <input type="text" id="id" placeholder="enter ID[s]">
@@ -50,6 +50,7 @@
             currentWord = words[currentIndex];
             words.splice(currentIndex, 1);
             document.getElementById('theWord').textContent = currentWord;
+            document.getElementById('passedWords').textContent = '';
             passedWords = [];
         })
 
